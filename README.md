@@ -17,17 +17,27 @@ This platform integrates with IDEs and AI coding assistants to validate both fro
 ## Technology Stack
 
 - **Backend**: Python, Django, Django REST Framework
-- **Database**: PostgreSQL
+- **Database**: PostgreSQL (SQLite for development)
 - **Message Queue**: Redis
 - **API Documentation**: DRF Spectacular (Swagger UI)
-- **Frontend**: React/Vue.js (to be implemented)
-- **AI/ML Components**: Hugging Face Transformers library (to be implemented)
+- **AI/ML Components**: Hugging Face Transformers, Tree-sitter
+- **Containerization**: Docker
+- **Deployment**: Docker Compose, Nginx
+- **CI/CD**: GitHub Actions
 
-## Installation
+## Quick Start
+
+### Prerequisites
+- Python 3.13+
+- Docker and Docker Compose (recommended)
+- Git
+
+### Installation
 
 1. Clone the repository:
    ```bash
    git clone <repository-url>
+   cd ai_testing_and_code_reviewer_app
    ```
 
 2. Create a virtual environment:
@@ -41,27 +51,47 @@ This platform integrates with IDEs and AI coding assistants to validate both fro
    pip install -r requirements.txt
    ```
 
-4. Navigate to the project directory:
+4. Navigate to the Django project:
    ```bash
    cd ai_test_platform
    ```
 
-5. Create a PostgreSQL database and update the settings in `ai_test_platform/settings.py`
-
-6. Run migrations:
+5. Run migrations:
    ```bash
    python manage.py migrate
    ```
 
-7. Create a superuser:
+6. Create a superuser:
    ```bash
    python manage.py createsuperuser
    ```
 
-8. Run the development server:
+7. Start the development server:
    ```bash
    python manage.py runserver
    ```
+
+### Using Docker (Recommended)
+
+1. Build and start services:
+   ```bash
+   docker-compose up -d
+   ```
+
+2. Run migrations:
+   ```bash
+   docker-compose exec web python manage.py migrate
+   ```
+
+3. Create a superuser:
+   ```bash
+   docker-compose exec web python manage.py createsuperuser
+   ```
+
+4. Access the application:
+   - Web interface: http://localhost:8000/
+   - API Documentation: http://localhost:8000/api/schema/swagger-ui/
+   - Admin interface: http://localhost:8000/admin/
 
 ## API Documentation
 
@@ -75,16 +105,37 @@ Once the server is running, you can access the API documentation at:
 ai_test_platform/
 ├── ai_test_platform/          # Project settings and configuration
 ├── test_management/           # Test case and project management
-├── code_analysis/             # Code analysis components (planned)
-├── test_execution/            # Test execution components (planned)
-├── reporting/                 # Reporting and analytics (planned)
+├── code_analysis/             # Code analysis components
+├── test_execution/            # Test execution components
+├── reporting/                 # Reporting and analytics
 ├── manage.py                 # Django management script
 └── requirements.txt          # Project dependencies
 ```
 
-## Development Roadmap
+## Development
 
-Refer to [OPEN_SOURCE_TESTING_PLATFORM_PLAN.md](OPEN_SOURCE_TESTING_PLATFORM_PLAN.md) for the complete 12-month development roadmap.
+### Running the Development Server
+
+You can use the provided script to start the development environment:
+
+```bash
+python start_dev_server.py
+```
+
+### Running Tests
+
+```bash
+cd ai_test_platform
+python manage.py test
+```
+
+## Deployment
+
+For production deployment, use the production Docker Compose configuration:
+
+```bash
+docker-compose -f docker-compose.prod.yml up -d
+```
 
 ## Contributing
 
