@@ -39,6 +39,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Development server startup script
 - Comprehensive project documentation and setup instructions
 - Git repository with proper commit history
+- Security analysis module for identifying vulnerabilities
+- Automated code fixer for improving code quality
+- IDE integration framework using Model Context Protocol
+- IDE plugin models, serializers, and API endpoints
+- VS Code extension example with full feature implementation
+- Security vulnerability detection and fixing capabilities
+- Code quality improvement automation
 
 ### Changed
 - Updated backend framework from FastAPI to Django REST Framework
@@ -64,6 +71,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added proper authentication and permission classes
 - Configured secure session management with Redis
 - Set up production-ready WSGI with WhiteNoise
+- Added security analysis capabilities for code review
 
 ## [0.1.0] - 2025-11-02
 

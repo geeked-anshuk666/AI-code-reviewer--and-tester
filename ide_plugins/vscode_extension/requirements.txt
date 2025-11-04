@@ -1,0 +1,22 @@
+# Requirements for the VS Code extension
+# Note: This is a Node.js extension, so these are for development purposes
+
+# For building the extension:
+typescript>=4.3.2
+@types/vscode>=1.60.0
+@types/node>=14.x
+
+# For testing:
+@types/mocha>=8.2.2
+@types/glob>=7.1.3
+mocha>=8.4.0
+glob>=7.1.7
+
+# For linting:
+eslint>=7.27.0
+
+# For packaging:
+@vscode/vsce>=2.15.0
+
+# Runtime dependencies:
+axios>=0.21.1

@@ -26,4 +26,5 @@ urlpatterns = [
     path('code-analysis/', include('code_analysis.urls')),
     path('test-execution/', include('test_execution.urls')),
     path('reporting/', include('reporting.urls')),
+    path('ide-integration/', include('ide_integration.urls')),
 ]

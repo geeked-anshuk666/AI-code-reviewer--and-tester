@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'code_analysis',
     'test_execution',
     'reporting',
+    'ide_integration',
     # Third-party apps
     'rest_framework',
     'drf_spectacular',

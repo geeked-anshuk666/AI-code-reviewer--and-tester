@@ -1,0 +1,113 @@
+{
+  "name": "ai-testing-platform",
+  "displayName": "AI Testing Platform",
+  "description": "Integrate AI-powered code review, test generation, and security scanning into your IDE",
+  "version": "1.0.0",
+  "publisher": "ai-testing-platform",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-testing-platform.codeReview",
+        "title": "AI Code Review"
+      },
+      {
+        "command": "ai-testing-platform.generateTests",
+        "title": "Generate Tests"
+      },
+      {
+        "command": "ai-testing-platform.securityScan",
+        "title": "Security Scan"
+      },
+      {
+        "command": "ai-testing-platform.applyFixes",
+        "title": "Apply Code Fixes"
+      },
+      {
+        "command": "ai-testing-platform.runTests",
+        "title": "Run Tests"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "ai-testing-platform.codeReview",
+          "when": "resourceExtname == '.py' || resourceExtname == '.js' || resourceExtname == '.java'",
+          "group": "navigation"
+        },
+        {
+          "command": "ai-testing-platform.generateTests",
+          "when": "resourceExtname == '.py' || resourceExtname == '.js' || resourceExtname == '.java'",
+          "group": "navigation"
+        },
+        {
+          "command": "ai-testing-platform.securityScan",
+          "when": "resourceExtname == '.py' || resourceExtname == '.js' || resourceExtname == '.java'",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI Testing Platform",
+      "properties": {
+        "ai-testing-platform.serverUrl": {
+          "type": "string",
+          "default": "http://localhost:8000",
+          "description": "URL of the AI Testing Platform server"
+        },
+        "ai-testing-platform.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for authentication with the AI Testing Platform"
+        },
+        "ai-testing-platform.autoReview": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable automatic code review on file save"
+        },
+        "ai-testing-platform.testFramework": {
+          "type": "string",
+          "default": "pytest",
+          "enum": [
+            "pytest",
+            "unittest",
+            "jest",
+            "mocha"
+          ],
+          "description": "Preferred test framework for test generation"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "eslint": "^7.27.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "@vscode/test-electron": "^1.6.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}

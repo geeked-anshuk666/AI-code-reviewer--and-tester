@@ -13,6 +13,9 @@ This platform integrates with IDEs and AI coding assistants to validate both fro
 - **Cloud-Based Execution**: Runs tests in parallel on scalable cloud environments
 - **IDE Integration**: Connects with popular code editors and AI coding assistants
 - **Detailed Reporting and Analysis**: Generates structured reports with actionable insights
+- **Security Analysis**: Identifies security vulnerabilities and suggests fixes
+- **Code Quality Improvement**: Automatically improves code quality with AI-powered refactoring
+- **Model Context Protocol (MCP) Support**: Integrates with AI coding assistants via MCP
 
 ## Technology Stack
 
@@ -93,6 +96,34 @@ This platform integrates with IDEs and AI coding assistants to validate both fro
    - API Documentation: http://localhost:8000/api/schema/swagger-ui/
    - Admin interface: http://localhost:8000/admin/
 
+## IDE Integration
+
+The platform includes full IDE integration capabilities through the Model Context Protocol (MCP) and custom plugins:
+
+### VS Code Extension
+
+A fully-featured VS Code extension is available in the `ide_plugins/vscode_extension` directory with the following features:
+
+1. **Code Review**: Automatically analyze your code for quality issues
+2. **Test Generation**: Generate unit tests based on your code structure
+3. **Security Scanning**: Identify security vulnerabilities in your code
+4. **Automated Fixes**: Apply code improvements automatically
+5. **Test Execution**: Run tests directly from your IDE
+
+### Installation
+
+1. Open VS Code
+2. Navigate to the Extensions view (Ctrl+Shift+X)
+3. Install the "AI Testing Platform" extension
+4. Configure the extension with your server URL and API key
+
+### API Endpoints for IDE Integration
+
+- POST `/ide-integration/api/events/code_review/` - Perform code review
+- POST `/ide-integration/api/events/generate_tests/` - Generate tests
+- POST `/ide-integration/api/events/security_scan/` - Security scanning
+- POST `/ide-integration/api/events/fix_code/` - Apply automated fixes
+
 ## API Documentation
 
 Once the server is running, you can access the API documentation at:
@@ -108,8 +139,12 @@ ai_test_platform/
 ├── code_analysis/             # Code analysis components
 ├── test_execution/            # Test execution components
 ├── reporting/                 # Reporting and analytics
+├── ide_integration/           # IDE integration components
 ├── manage.py                 # Django management script
 └── requirements.txt          # Project dependencies
+
+ide_plugins/
+└── vscode_extension/         # VS Code extension implementation
 ```
 
 ## Development

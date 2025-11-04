@@ -53,6 +53,8 @@ def main():
             print("API Documentation: http://localhost:8000/api/schema/swagger-ui/")
             print("Admin interface: http://localhost:8000/admin/")
             print("Username: admin, Password: admin")
+            print("\nIDE Integration API endpoints are available at:")
+            print("  - http://localhost:8000/ide-integration/api/")
             print("=" * 50)
             
             # Follow the logs
@@ -76,6 +78,7 @@ def main():
             print("Starting development server...")
             print("Access the application at: http://127.0.0.1:8000/")
             print("API Documentation: http://127.0.0.1:8000/api/schema/swagger-ui/")
+            print("IDE Integration API: http://127.0.0.1:8000/ide-integration/api/")
             print("Press Ctrl+C to stop the server")
             print("-" * 50)
             
@@ -89,5 +92,33 @@ def main():
     
     return 0
 
+def setup_ide_plugin():
+    """Set up the IDE plugin development environment."""
+    print("Setting up IDE plugin development environment...")
+    
+    # Check if npm is installed
+    try:
+        subprocess.run(["npm", "--version"], check=True, capture_output=True)
+        print("npm found, setting up VS Code extension...")
+        
+        # Navigate to the extension directory
+        extension_dir = os.path.join(os.path.dirname(__file__), 'ide_plugins', 'vscode_extension')
+        if os.path.exists(extension_dir):
+            try:
+                subprocess.run(["npm", "install"], check=True, cwd=extension_dir)
+                print("VS Code extension dependencies installed!")
+                print("To develop the extension:")
+                print("  1. Open {} in VS Code".format(extension_dir))
+                print("  2. Press F5 to launch the extension")
+            except subprocess.CalledProcessError:
+                print("Error installing extension dependencies")
+        else:
+            print("IDE plugin directory not found")
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        print("npm not found. Please install Node.js to develop IDE plugins.")
+
 if __name__ == "__main__":
-    sys.exit(main())
+    if len(sys.argv) > 1 and sys.argv[1] == "setup-ide":
+        setup_ide_plugin()
+    else:
+        sys.exit(main())
