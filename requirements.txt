@@ -1,0 +1,11 @@
+Django>=5.2.7
+djangorestframework>=3.16.1
+drf-spectacular>=0.29.0
+psycopg2-binary>=2.9.11
+redis>=7.0.1
+transformers>=4.57.1
+torch>=2.9.0
+scikit-learn>=1.7.2
+tree-sitter>=0.25.2
+gunicorn>=23.0.0
+whitenoise>=6.8.2
